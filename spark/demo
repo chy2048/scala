@@ -1,0 +1,16 @@
+def main(args:Array[String]) = {
+  val spark = SparkSession.builder()
+  .appName("appName)
+  .config("spark.serializer","org.apache.spark.serializer.KryoSerialier")
+  .config("spark.kryoserizlizer.buffer.max","512m")
+  .enableHiveSupport().getOrCreate()
+  val sc = spark.sparkContext
+  
+  val input = sc.textFile("/hdfspath").map()    //.cache() ?
+  
+  val broadcast_msg = sc.broadcast(input)
+  
+  val inputRDD = spark.sql("your sql")
+                                                      .
+
+}
