@@ -1,7 +1,7 @@
-##map
+#map
 将原来 RDD 的每个数据项通过 map 中的用户自定义函数 f 映射转变为一个新的元素.
 
-##flatMap
+#flatMap
 将原来 RDD 中的每个元素通过函数 f 转换为新的元素，并将生成的 RDD 的每个集合中的元素合并为一个集合
 
 两个的区别如下：
@@ -35,6 +35,38 @@ List(2,4, 3.1,3.2, 8)
 List(2,4, List(3.1,3.2), 8)
 
 
-
-##glom
+#glom
 glom函数将每个分区形成一个数组
+
+
+#union
+使用 union 函数时需要保证两个 RDD 元素的数据类型相同，返回的 RDD 数据类型和被合并的 RDD 元素数据类型相同，并不进行去重操作，保存所有元素。如果想去重
+可以使用 distinct()
+
+#groupBy
+将元素通过函数生成相应的 Key，数据就转化为 Key-Value 格式，之后将 Key 相同的元素分为一组
+
+
+#filter
+filter 函数功能是对元素进行过滤，对每个 元 素 应 用 f 函 数， 返 回 值 为 true 的 元 素 在RDD 中保留，返回值为 false 的元素将被过滤掉
+
+#distinct
+distinct将RDD中的元素进行去重操作
+
+#cache
+cache 将 RDD 元素从磁盘缓存到内存
+
+#mapValues
+mapValues ：针对（Key， Value）型数据中的 Value 进行 Map 操作，而不对 Key 进行处理。
+a=>a+2 代表对 (V1,1) 这样的 Key Value 数据对，数据只对 Value 中的 1 进行加 2 操作，返回结果为 3
+
+#reduceByKey
+两个值合并成一个值
+reduceByKey((A,B)=>A+B)
+k1,1
+k1,2   ->    k1,6
+k1,3         K2,1
+k2,1
+
+
+
